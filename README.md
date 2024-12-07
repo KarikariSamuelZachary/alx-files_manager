@@ -1,0 +1,1 @@
+A simple file management API built with Express, MongoDB and Node.js.
