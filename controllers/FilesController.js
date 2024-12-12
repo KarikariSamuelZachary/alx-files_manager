@@ -1,3 +1,9 @@
+/**
+ * This module exports the FilesController class which handles all the file
+ * related logic.
+ * @module FilesController
+ */
+
 const fs = require('fs');
 const path = require('path');
 const uuid = require('uuid');
@@ -5,7 +11,20 @@ const { ObjectId } = require('mongodb');
 const dbClient = require('../utils/db');
 const redisClient = require('../utils/redis');
 
+/**
+ * FilesController class encapsulates the logic for handling file-related
+ * requests.
+ * @class
+ * @author Javlon Tursunov
+ * @license MIT
+ */
 class FilesController {
+  /**
+   * Handles the POST /files request.
+   * @param {import('express').Request} req
+   * @param {import('express').Response} res
+   * @returns {Promise<void>}
+   */
   static async postUpload(req, res) {
     const token = req.headers['x-token'];
     if (!token) {
@@ -68,6 +87,12 @@ class FilesController {
     return res.status(201).json(fileDocument);
   }
 
+  /**
+   * Handles the GET /files/:id request.
+   * @param {import('express').Request} req
+   * @param {import('express').Response} res
+   * @returns {Promise<void>}
+   */
   static async getShow(req, res) {
     const token = req.headers['x-token'];
     const userId = await redisClient.get(`auth_${token}`);
@@ -90,6 +115,12 @@ class FilesController {
     });
   }
 
+  /**
+   * Handles the GET /files request.
+   * @param {import('express').Request} req
+   * @param {import('express').Response} res
+   * @returns {Promise<void>}
+   */
   static async getIndex(req, res) {
     const token = req.headers['x-token'];
     const userId = await redisClient.get(`auth_${token}`);
@@ -109,9 +140,3 @@ class FilesController {
 }
 
 module.exports = FilesController;
-
-// const allFiles = await dbClient.client.db().collection('files').find({}).toArray();
-// for (const file of allFiles) {
-//   await dbClient.client.db().collection('files').deleteOne({ _id: file._id });
-// }
-// res.status(200).json({ message: 'All files have been deleted' });
