@@ -29,7 +29,7 @@ const redisClient = require('../utils/redis');
 /**
  * AuthController class encapsulates the authentication logic.
  * @class
- * @author Javlon Tursunov
+ * @author Karikari Samuel
  * @license MIT
  */
 class AuthController {
