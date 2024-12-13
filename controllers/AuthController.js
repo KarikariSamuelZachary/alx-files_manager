@@ -1,10 +1,44 @@
+/**
+ * This module exports the AuthController class which handles the
+ * authentication logic.
+ * @module AuthController
+ * @author Javlon Tursunov
+ * @license MIT
+ */
 import sha1 from 'sha1';
+
+/**
+ * @typedef {Object} User
+ * @property {string} email - Email of the user.
+ * @property {string} _id - ID of the user.
+ * @property {string} password - SHA1 hashed password of the user.
+ */
+
+/**
+ * @typedef {Object} AuthController
+ * @property {function(req, res): Promise<void>} getConnect - Handles the
+ * GET /connect request.
+ * @property {function(req, res): Promise<void>} getDisconnect - Handles the
+ * GET /disconnect request.
+ */
 
 const uuid = require('uuid');
 const dbClient = require('../utils/db');
 const redisClient = require('../utils/redis');
 
+/**
+ * AuthController class encapsulates the authentication logic.
+ * @class
+ * @author Javlon Tursunov
+ * @license MIT
+ */
 class AuthController {
+  /**
+   * Handles the GET /connect request.
+   * @param {import('express').Request} req
+   * @param {import('express').Response} res
+   * @returns {Promise<void>}
+   */
   static async getConnect(req, res) {
     const { authorization } = req.headers;
     if (!authorization) {
@@ -26,6 +60,12 @@ class AuthController {
     return res.status(200).json({ token });
   }
 
+  /**
+   * Handles the GET /disconnect request.
+   * @param {import('express').Request} req
+   * @param {import('express').Response} res
+   * @returns {Promise<void>}
+   */
   static async getDisconnect(req, res) {
     const token = req.headers['x-token'];
     if (!token) {
