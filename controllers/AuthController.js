@@ -2,7 +2,7 @@
  * This module exports the AuthController class which handles the
  * authentication logic.
  * @module AuthController
- * @author Javlon Tursunov
+ * @author Karikari Samuel
  * @license MIT
  */
 import sha1 from 'sha1';
