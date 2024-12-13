@@ -2,7 +2,7 @@
  * This file contains the RedisClient class which encapsulates the
  * functionality of the Redis key-value store.
  * @module RedisClient
- * @author Javlon Tursunov
+ * @author Karikari Samuel
  * @license MIT
  */
 const redis = require('redis');
