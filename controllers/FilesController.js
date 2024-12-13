@@ -15,7 +15,7 @@ const redisClient = require('../utils/redis');
  * FilesController class encapsulates the logic for handling file-related
  * requests.
  * @class
- * @author Javlon Tursunov
+ * @author Karikari Samuel
  * @license MIT
  */
 class FilesController {
