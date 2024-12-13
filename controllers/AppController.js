@@ -2,7 +2,7 @@
  * This module exports the AppController class which handles requests to the
  * application endpoints.
  * @module AppController
- * @author Javlon Tursunov
+ * @author Samuel Karikari
  * @license MIT
  */
 
